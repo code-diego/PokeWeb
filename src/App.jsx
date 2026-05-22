@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { CardPokemon } from './components/CardPokemon.jsx'
 import { PagePokemon } from './components/PagePokemon.jsx'
 

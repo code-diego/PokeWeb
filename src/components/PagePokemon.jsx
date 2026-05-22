@@ -3,7 +3,7 @@ import { useOnePokemon } from '../services/useOnePokemon.js'
 import { types } from '../services/types.js'
 
 export function PagePokemon({ pokemon , closeSection}) {
-  const gif = getSpriteUrl('showdown', 'front_shiny', pokemon.id)
+  const gif = getSpriteUrl('home', 'front_shiny', pokemon.id)
   const { pokemonData , loading } = useOnePokemon(pokemon)
   // TODO : mover este fetch a services/usePokemos.js
   

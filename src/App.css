@@ -1,11 +1,19 @@
 body{
-  font-family: 'Arial', sans-serif;
-  display: grid;
+  max-width: 1200px;
+  font-family: consolas;
+  display: block;
 }
 header{
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.Input-pokemon {
+  flex: 1;
+  max-width: 300px;
 }
 
 main{
@@ -15,7 +23,7 @@ main{
 }
 
 .Card-pokemon {
-  border: 1px solid white;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +40,7 @@ main{
   width: 100px;
   height: 100px;
 }
-.Card-pokemon .selected {
+.Card-pokemon.selected {
   border: 2px solid #ff6b6b;
   box-shadow: 0 0 12px rgba(219, 61, 13, 0.8);
   transform: translateY(-5px);
@@ -65,9 +73,26 @@ main.with-detail .Page-pokemon {
 /* panel de la derecha para mostrar detalles del pokemon seleccionado */
 .Page-pokemon {
   width: 90%;
-  border: 1px solid white;
+  border: 1px solid var(--border);
   padding: 20px;
   margin-top: 20px;
+  animation: slideIn 0.25s ease;
+}
+
+main.with-detail {
+  gap: 20px;
+  align-items: stretch;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.Container-Button-more {
+  grid-column: 1 / -1;   /* span de toda la fila del grid */
+  text-align: center;
+  padding: 10px 0;
 }
 
 .Type-sprite {
