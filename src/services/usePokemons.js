@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-const LIMIT = 30
+const LIMIT = 200
 const MAX_POKEMONS = 1025
 
 export function usePokemons() {
@@ -16,7 +16,7 @@ export function usePokemons() {
             const data = await response.json()
 
             const newPokemons = data.results.map(pk => ({
-                name: pk.name,
+                name : pk.name.charAt(0).toUpperCase() + pk.name.slice(1),
                 id: parseInt(pk.url.split('/').filter(Boolean).pop())
             }))
             setPokemons(prev => {

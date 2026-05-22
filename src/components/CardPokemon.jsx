@@ -11,11 +11,12 @@ function OneCard({ pokemon, setPokemonSelect }) {
     className="Card-pokemon"
     onClick={() => setPokemonSelect(pokemon)} 
     >
-    <p>N° {pokemon.id} {pokemon.name} </p>
     <img 
       src={getSpriteUrl('official', 'front', pokemon.id)} 
       alt={pokemon.name} 
     />
+    <p>N° {String(pokemon.id).padStart(4, '0')}</p>
+    <p>{pokemon.name}</p>
   </div>
   )
 }
