@@ -1,33 +1,33 @@
-import { use } from 'react'
 import './App.css'
 import { useState, useEffect } from 'react'
-import TarjetaPokemon from './components/TarjetaPokemon'
+import { CardPokemon } from './components/CardPokemon.jsx'
+import { PagePokemon } from './components/PagePokemon.jsx'
 
 function App() {
-  const [pokemons, setPokemons] = useState([])
-  useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-      .then(response => response.json())
-      .then(data => {
-        const count = data.count
-        const pokes = data.results.map(pk => ({
-          name : pk.name,
-          id : pk.url.split('/')[6]
-        }))
-        setPokemons(pokes)
-      })
-
-  }, [])
-
+  const [pokemonSelected, setPokemonSelected] = useState(null)
 
   return (
     <div className='App'>
-      <header className='Header'>
-        <h1 className='Title'>Pokedex</h1>
+      <header>
+        <h1 className='Title-page'>Pokedex</h1>
+        <input className='Input-pokemon' type='text' placeholder='Pikachu, charizard... o #25, #6' />
+        <button className='Button-search'>Buscar</button>
       </header>
 
-      <main>
-        <TarjetaPokemon pokemons={pokemons} />
+      <main className={pokemonSelected ? 'with-detail' : ''}>
+        <section className='Container-Cards'> 
+          <CardPokemon 
+            setPokemonSelect={setPokemonSelected}
+          />     
+        </section>
+
+        {/* Section para mostrar detalles del pokemon seleccionado */}
+        {pokemonSelected && 
+          <PagePokemon 
+          pokemon={pokemonSelected} 
+          closeSection={() => setPokemonSelected(null)}
+        /> 
+        }
       </main>
     </div>
   )
